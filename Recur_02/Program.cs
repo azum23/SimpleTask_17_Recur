@@ -5,20 +5,20 @@ using System.Text;
 using System.Threading.Tasks;
 
 /*
- * Вычисление факториала через рекурсию
+ * Вычиление двойного факториала n * (n-2) * (n-4) ... * 2(1).
  */
 
-namespace Recur_01
+namespace Recur_02
 {
     class Program
     {
-        static int Factorial(int n, ref int result)
+        static int Factorial2(int n, ref int result)
         {
-            result *= n;
-            n--;
-            if (n>0)
+            if (n != 1 && n != 0)
             {
-                Factorial(n,ref result);
+                result *= n;
+                n=n-2;
+                Factorial2(n, ref result);
             }
             return result;
         }
@@ -28,8 +28,9 @@ namespace Recur_01
             Console.WriteLine("Введите целое число: ");
             int n = Convert.ToInt32(Console.ReadLine());
             int result = 1;
-            Factorial(n,ref result);
+            Factorial2(n, ref result);
             Console.WriteLine(result);
+
             Console.ReadKey();
         }
     }
